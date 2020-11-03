@@ -73,7 +73,7 @@ class ChatsFragment : Fragment() {
                     val user = dataSnapshot.getValue(Users::class.java)
 
                     for (eachChatList in userChatList!!){
-                        if (user!!.getUid().equals(eachChatList.getId())){
+                        if (!user!!.getUid().equals(eachChatList.getId())){
                             (mUsers as ArrayList).add(user!!)
                         }
                      }
