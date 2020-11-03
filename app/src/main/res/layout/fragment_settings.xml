@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D3D3D3"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F9F9F3"
     android:padding="30dp"
     tools:context=".fragments.SettingsFragment">
     
@@ -11,7 +12,8 @@
         android:id="@+id/cv1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="12dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -74,6 +76,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginRight="35dp"
             android:layout_marginLeft="35dp"
+            android:layout_marginBottom="2dp"
             android:layout_gravity="center">
         </ImageView>
 
@@ -85,6 +88,7 @@
             android:scaleType="centerCrop"
             android:layout_marginTop="3dp"
             android:layout_marginRight="30dp"
+            android:layout_marginBottom="3dp"
             android:layout_gravity="center">
         </ImageView>
 
@@ -96,6 +100,7 @@
             android:scaleType="centerCrop"
             android:layout_marginTop="3dp"
             android:layout_marginRight="35dp"
+            android:layout_marginBottom="3dp"
             android:layout_gravity="center">
         </ImageView>
     </LinearLayout>

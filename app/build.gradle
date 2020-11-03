@@ -58,6 +58,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation "com.airbnb.android:lottie:3.4.4"
 
     implementation platform('com.google.firebase:firebase-bom:25.11.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
