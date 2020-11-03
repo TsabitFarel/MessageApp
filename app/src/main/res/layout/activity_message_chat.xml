@@ -33,6 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
+                android:fontFamily="@font/poppinslight"
                 android:layout_marginLeft="26dp"
                 android:textColor="@android:color/white"
                 android:text="Username"
@@ -47,6 +48,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_chat"
         android:layout_width="match_parent"
+        android:background="@drawable/img_wallpaper"
         android:layout_height="match_parent"
         android:layout_below="@+id/barLayout_message_chat"
         android:layout_above="@+id/relative_layout_bottom">
@@ -77,6 +79,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:hint="Write Your Message"
+            android:fontFamily="@font/poppinslight"
             android:layout_toRightOf="@id/attach_image_file_btn"
             android:layout_toLeftOf="@id/send_message_btn"
             android:layout_centerVertical="true"

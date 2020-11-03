@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D3D3D3"
     android:padding="30dp"
     tools:context=".fragments.SettingsFragment">
     
@@ -59,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cv1"
         android:gravity="center"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/rectangle"
         android:layout_marginTop="40dp"
         android:orientation="horizontal"
         android:padding="6dp">
@@ -83,7 +84,7 @@
             android:src="@drawable/instagram"
             android:scaleType="centerCrop"
             android:layout_marginTop="3dp"
-            android:layout_marginRight="35dp"
+            android:layout_marginRight="30dp"
             android:layout_gravity="center">
         </ImageView>
 
@@ -91,7 +92,7 @@
             android:id="@+id/set_website"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/googlechrome"
+            android:src="@drawable/chrome"
             android:scaleType="centerCrop"
             android:layout_marginTop="3dp"
             android:layout_marginRight="35dp"

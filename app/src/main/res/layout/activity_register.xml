@@ -4,24 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/register"
+    android:background="#FFFFFF"
     tools:context=".RegisterActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" >
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/undrawregister" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,9 +27,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
+            android:fontFamily="@font/poppinslight"
             android:hint="Username"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white">
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black">
 
         </EditText>
 
@@ -48,9 +40,10 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:hint="Email"
+            android:fontFamily="@font/poppinslight"
             android:layout_marginTop="10dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white">
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black">
 
         </EditText>
 
@@ -60,9 +53,10 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:hint="Password"
+            android:fontFamily="@font/poppinslight"
             android:layout_marginTop="10dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white">
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black">
 
         </EditText>
 
@@ -73,6 +67,9 @@
             android:background="@color/colorPrimary"
             android:inputType="text"
             android:text="Register"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:fontFamily="@font/poppinslight"
             android:layout_marginTop="25dp"
             android:textColor="@android:color/white">
 

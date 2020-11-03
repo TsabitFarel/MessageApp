@@ -18,6 +18,7 @@
         android:layout_toRightOf="@id/profile_image"
         android:layout_marginLeft="6dp"
         android:text="Testing Message"
+        android:fontFamily="@font/poppinslight"
         android:textSize="18sp"
         android:padding="8dp"
         android:background="@drawable/background_left">
@@ -37,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="seen"
+        android:fontFamily="@font/poppinslight"
         android:layout_below="@id/show_text_message">
     </TextView>
 

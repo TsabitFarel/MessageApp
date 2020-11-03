@@ -19,17 +19,6 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-
-        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_register)
-        setSupportActionBar(toolbar)
-        supportActionBar!!.title = "Register"
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener {
-            val intent = Intent(this@RegisterActivity, WelcomeActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
         mAuth = FirebaseAuth.getInstance()
 
         btn_register.setOnClickListener {

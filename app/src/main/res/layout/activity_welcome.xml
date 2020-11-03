@@ -4,18 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome"
     android:orientation="vertical"
+    android:background="#FFFFFF"
     android:gravity="center"
     tools:context=".WelcomeActivity">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/undraw_welcome"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:text="Welcome" >
+        android:textColor="@android:color/black"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:fontFamily="@font/poppinslight"
+        android:text="Begin Chat" >
 
     </TextView>
 
@@ -27,10 +34,14 @@
         android:background="@color/colorPrimary"
         android:inputType="text"
         android:text="Register"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppinslight"
         android:textColor="@android:color/white"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="8dp"
         >
 
     </Button>
@@ -42,10 +53,15 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:inputType="text"
+        android:gravity="center"
+        android:padding="8dp"
+        android:fontFamily="@font/poppinslight"
         android:text="Login"
+        android:layout_marginBottom="16dp"
+        android:textStyle="bold"
         android:textColor="@android:color/white"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="10dp">
 
     </Button>
