@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cv1"
         android:gravity="center"
-        android:background="@drawable/rectangle"
+        android:background="@drawable/greenbar"
         android:layout_marginTop="40dp"
         android:orientation="horizontal"
         android:padding="6dp">
