@@ -11,7 +11,7 @@
         android:id="@+id/lottieAnimationView"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        app:lottie_rawRes="@raw/whatsappanimation"
+        app:lottie_rawRes="@raw/chatbubble"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:layout_constraintBottom_toBottomOf="parent"
