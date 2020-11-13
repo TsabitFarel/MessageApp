@@ -7,12 +7,6 @@
     android:background="@color/ghostWhite"
     tools:context=".LoginActivity">
 
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@drawable/undrawlogin"
-        android:layout_centerHorizontal="true" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,27 +15,40 @@
         android:orientation="vertical"
         android:layout_centerInParent="true" >
 
-        <EditText
-            android:id="@+id/email_login"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimary"
-            android:inputType="textEmailAddress"
-            android:fontFamily="@font/poppinslight"
             android:hint="Email"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/blackDove" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:startIconDrawable="@drawable/ic_baseline_email_24"
+            app:endIconMode="clear_text">
 
-        <EditText
-            android:id="@+id/password_login"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:fontFamily="@font/poppinsregular" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimary"
-            android:inputType="textPassword"
-            android:fontFamily="@font/poppinslight"
+            android:layout_marginTop="8dp"
             android:hint="Password"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/blackDove"/>
+            app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
