@@ -26,7 +26,7 @@ class ChatsFragment : Fragment() {
     lateinit var recyclerview_chat_list: RecyclerView
     private var firebaseUser: FirebaseUser? = null
 
-    override fun onCreateView(
+    override fun onCreateView (
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,7 +47,6 @@ class ChatsFragment : Fragment() {
                 (userChatList as ArrayList).clear()
                 for (dataSnapshot in snapshot.children){
                     val chatList = dataSnapshot.getValue(ChatList::class.java)
-
                     (userChatList as ArrayList).add(chatList!!)
                 }
                 retrieveChatList()
@@ -57,22 +56,20 @@ class ChatsFragment : Fragment() {
 
             }
         })
-
         return view
     }
 
-    private fun retrieveChatList(){
+    private fun retrieveChatList() {
         mUsers = ArrayList()
-
         val ref = FirebaseDatabase.getInstance().reference.child("Users")
-        ref.addValueEventListener(object : ValueEventListener{
+        ref.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 (mUsers as ArrayList<Users>).clear()
-                for (dataSnapshot in snapshot.children){
+                for (dataSnapshot in snapshot.children) {
                     val user = dataSnapshot.getValue(Users::class.java)
 
-                    for (eachChatList in userChatList!!){
+                    for (eachChatList in userChatList!!) {
                         if (!user!!.getUid().equals(eachChatList.getId())){
                             (mUsers as ArrayList).add(user!!)
                         }
@@ -81,11 +78,8 @@ class ChatsFragment : Fragment() {
                 userAdapter = UserAdapter(context!!, (mUsers as ArrayList<Users>), true)
                 recyclerview_chat_list.adapter = userAdapter
             }
-
             override fun onCancelled(error: DatabaseError) {
-
             }
         })
-
     }
 }

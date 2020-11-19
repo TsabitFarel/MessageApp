@@ -28,7 +28,7 @@ import id.tsabit.whatsappclone.R
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.fragment_settings.view.*
 
-class SettingsFragment : Fragment(){
+class SettingsFragment : Fragment() {
 
     var usersReference: DatabaseReference? = null
     var firebaseUser: FirebaseUser? = null
@@ -43,6 +43,7 @@ class SettingsFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(R.layout.fragment_settings, container, false)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
@@ -61,8 +62,8 @@ class SettingsFragment : Fragment(){
                     }
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
+
             }
         })
 
@@ -113,7 +114,7 @@ class SettingsFragment : Fragment(){
         }
         builder.setView(editText)
 
-        builder.setPositiveButton("create", DialogInterface.OnClickListener{
+        builder.setPositiveButton("create", DialogInterface.OnClickListener {
             dialog, which ->
             val str = editText.text.toString()
 

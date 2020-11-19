@@ -15,13 +15,13 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        btn_register_welcome.setOnClickListener{
+        btn_register_welcome.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        btn_login_welcome.setOnClickListener{
+        btn_login_welcome.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
@@ -33,8 +33,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
 
-        if(firebaseUser != null)
-        {
+        if(firebaseUser != null) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()

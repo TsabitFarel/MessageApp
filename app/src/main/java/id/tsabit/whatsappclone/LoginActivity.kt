@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_register.*
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
@@ -16,10 +14,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
         mAuth = FirebaseAuth.getInstance()
 
-        btn_login.setOnClickListener{
+        btn_login.setOnClickListener {
             loginUser()
         }
     }
@@ -28,15 +25,13 @@ class LoginActivity : AppCompatActivity() {
         val email:String = email_login.text.toString()
         val password:String = password_login.text.toString()
 
-        if (email == "")
-        {
+        if (email == "") {
             Toast.makeText(this, "Please Write Your Email", Toast.LENGTH_SHORT).show()
-        }
-        else if (password == "")
-        {
+
+        } else if (password == "") {
             Toast.makeText(this, "Please Write Your Password", Toast.LENGTH_SHORT).show()
-        }
-        else {
+
+        } else {
             mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {

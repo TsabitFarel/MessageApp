@@ -1,15 +1,11 @@
 package id.tsabit.whatsappclone
 
-import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.ProgressBar
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.Continuation
@@ -64,7 +60,7 @@ class MessageChatActivity : AppCompatActivity() {
         reference = FirebaseDatabase.getInstance()
             .reference.child("Users").child(userIdVisit)
 
-        reference!!.addValueEventListener(object : ValueEventListener{
+        reference!!.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user: Users? = snapshot.getValue(Users::class.java)
@@ -82,12 +78,9 @@ class MessageChatActivity : AppCompatActivity() {
 
         send_message_btn.setOnClickListener {
             val message = text_message.text.toString()
-            if (message == "")
-            {
+            if (message == "") {
                 Toast.makeText(this, "Please Write a Message First", Toast.LENGTH_LONG).show()
-            }
-            else
-            {
+            } else {
                 sendMessageToUser(firebaseUser!!.uid, userIdVisit, message)
             }
             text_message.setText("")
@@ -117,15 +110,14 @@ class MessageChatActivity : AppCompatActivity() {
             .child(messageKey!!)
             .setValue(messageHashMap)
             .addOnCompleteListener { task ->
-                if (task.isSuccessful)
-                {
+                if (task.isSuccessful) {
                     val chatListReference = FirebaseDatabase.getInstance()
                         .reference
                         .child("ChatList")
                         .child(firebaseUser!!.uid)
                         .child(userIdVisit)
 
-                    chatListReference.addListenerForSingleValueEvent(object : ValueEventListener{
+                    chatListReference.addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             if (!snapshot.exists()) {
                                 chatListReference.child("id").setValue(userIdVisit)
@@ -154,8 +146,7 @@ class MessageChatActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode==438 && resultCode==RESULT_OK && data!=null && data!!.data!=null)
-        {
+        if (requestCode==438 && resultCode==RESULT_OK && data!=null && data!!.data!=null) {
             val progressBar = ProgressDialog(this)
             progressBar.setMessage("Image is Uploading, Please wait a Second")
             progressBar.show()
@@ -175,9 +166,9 @@ class MessageChatActivity : AppCompatActivity() {
                         throw it
                     }
                 }
-                return@Continuation filePath.downloadUrl
-            }).addOnCompleteListener { task ->
-                if (task.isSuccessful){
+
+                return@Continuation filePath.downloadUrl }).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
                     val downloadUri = task.result
                     val url = downloadUri.toString()
 
@@ -203,22 +194,18 @@ class MessageChatActivity : AppCompatActivity() {
         reference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 (mChatList as ArrayList<Chat>).clear()
-                for (dataSnapshot in snapshot.children)
-                {
+                for (dataSnapshot in snapshot.children) {
                     val chat = dataSnapshot.getValue(Chat::class.java)
 
                     if (chat!!.getReceiver().equals(senderId) && chat.getSender().equals(receiverId)
-                        || chat.getReceiver().equals(receiverId) && chat.getSender().equals(senderId))
-                    {
+                        || chat.getReceiver().equals(receiverId) && chat.getSender().equals(senderId)) {
                         (mChatList as ArrayList<Chat>).add(chat)
                     }
-
                     chatAdapter = ChatAdapter(this@MessageChatActivity, (mChatList as ArrayList<Chat>),
                     receiverImageUrl!!)
                     recylerview_chat.adapter = chatAdapter
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
 
             }
@@ -230,7 +217,7 @@ class MessageChatActivity : AppCompatActivity() {
     private fun seenMessage(userId: String){
         val reference = FirebaseDatabase.getInstance().reference.child("chats")
 
-        seenListener = reference.addValueEventListener(object : ValueEventListener{
+        seenListener = reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (dataSnapshot in snapshot.children){
                      val chat = dataSnapshot.getValue(Chat::class.java)
@@ -242,7 +229,6 @@ class MessageChatActivity : AppCompatActivity() {
                     }
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
 
             }
@@ -251,7 +237,6 @@ class MessageChatActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-
         reference!!.removeEventListener(seenListener!!)
     }
 }

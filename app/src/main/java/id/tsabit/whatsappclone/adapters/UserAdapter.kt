@@ -11,12 +11,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
-import id.tsabit.whatsappclone.MainActivity
 import id.tsabit.whatsappclone.MessageChatActivity
 import id.tsabit.whatsappclone.ModelClasses.Users
 import id.tsabit.whatsappclone.R
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 
 class UserAdapter(mContext: Context, mUserList: List<Users>, isChatCheck: Boolean, ) : RecyclerView.Adapter<UserAdapter.ViewHolder?>(){
 
@@ -44,17 +41,15 @@ class UserAdapter(mContext: Context, mUserList: List<Users>, isChatCheck: Boolea
                 "Send Message",
                 "Visit Profile"
             )
+
             val builder: AlertDialog.Builder = AlertDialog.Builder(mContext)
             builder.setTitle("What do you want?")
             builder.setItems(options, DialogInterface.OnClickListener{ dialog, position ->
-                if (position == 0)
-                {
+                if (position == 0) {
                     val intent = Intent(mContext, MessageChatActivity::class.java)
                     intent.putExtra("visit_id", user.getUid())
-                    mContext.startActivity(intent)
-                }
-                if (position == 1)
-                {
+                    mContext.startActivity(intent) }
+                if (position == 1) {
 
                 }
             })
@@ -64,7 +59,6 @@ class UserAdapter(mContext: Context, mUserList: List<Users>, isChatCheck: Boolea
 
     override fun getItemCount(): Int {
         return mUsers.size
-
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

@@ -1,14 +1,12 @@
 package id.tsabit.whatsappclone.fragments
 
 import android.os.Bundle
-import android.renderscript.Sampler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +18,6 @@ import com.google.firebase.database.ValueEventListener
 import id.tsabit.whatsappclone.ModelClasses.Users
 import id.tsabit.whatsappclone.R
 import id.tsabit.whatsappclone.adapters.UserAdapter
-import kotlinx.android.synthetic.main.fragment_search.*
 
 class SearchFragment : Fragment() {
     private var userAdapter: UserAdapter? = null
@@ -44,8 +41,8 @@ class SearchFragment : Fragment() {
         retrieveAllUsers()
 
         searchEditText!!.addTextChangedListener (object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
+                override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
 
                 override fun onTextChanged(cs: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -55,7 +52,6 @@ class SearchFragment : Fragment() {
                 override fun afterTextChanged(s: Editable?) {
                 }
             })
-
         return view
     }
 
@@ -64,16 +60,13 @@ class SearchFragment : Fragment() {
 
         val refUsers = FirebaseDatabase.getInstance().reference.child("Users")
 
-        refUsers.addValueEventListener(object: ValueEventListener{
+        refUsers.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 (mUsers as ArrayList<Users>).clear()
-                if (searchEditText!!.text.toString() == "")
-                {
-                    for (p0 in snapshot.children)
-                    {
+                if (searchEditText!!.text.toString() == "") {
+                    for (p0 in snapshot.children) {
                         val user: Users? = p0.getValue(Users::class.java)
-                        if (!(user!!.getUid()).equals(firebaseUserID))
-                        {
+                        if (!(user!!.getUid()).equals(firebaseUserID)) {
                             (mUsers as ArrayList<Users>).add(user)
                         }
                     }
@@ -86,9 +79,7 @@ class SearchFragment : Fragment() {
 
             }
         })
-
     }
-
 
     private fun searchForUsers (str: String) {
         var firebaseUserID = FirebaseAuth.getInstance().currentUser!!.uid
@@ -99,16 +90,14 @@ class SearchFragment : Fragment() {
             .startAt(str)
             .endAt(str + "\uf8ff")
 
-        queryUsers.addValueEventListener(object : ValueEventListener{
+        queryUsers.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 (mUsers as ArrayList<Users>).clear()
 
-                for (p0 in snapshot.children)
-                {
+                for (p0 in snapshot.children) {
                     val user: Users? = p0.getValue(Users::class.java)
-                    if (!(user!!.getUid()).equals(firebaseUserID))
-                    {
+                    if (!(user!!.getUid()).equals(firebaseUserID)) {
                         (mUsers as ArrayList<Users>).add(user)
                     }
                 }
@@ -120,6 +109,5 @@ class SearchFragment : Fragment() {
 
             }
         })
-
     }
 }

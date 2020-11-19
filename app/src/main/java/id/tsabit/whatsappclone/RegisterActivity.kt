@@ -31,23 +31,18 @@ class RegisterActivity : AppCompatActivity() {
         val email:String = email_register.text.toString()
         val password:String = password_register.text.toString()
 
-        if (username == "")
-        {
+        if (username == "") {
             Toast.makeText(this, "Please Write Your Username", Toast.LENGTH_SHORT).show()
         }
-        else if (email == "")
-        {
+        else if (email == "") {
             Toast.makeText(this, "Please Write Your Email", Toast.LENGTH_SHORT).show()
         }
-        else if (password == "")
-        {
+        else if (password == "") {
             Toast.makeText(this, "Please Write Your Password", Toast.LENGTH_SHORT).show()
-        }
-        else {
+        } else {
             mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-                    if (task.isSuccessful)
-                    {
+                    if (task.isSuccessful) {
                         firebaseUserID = mAuth.currentUser!!.uid
                         refUsers = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUserID)
 
@@ -71,9 +66,7 @@ class RegisterActivity : AppCompatActivity() {
                                     finish()
                                 }
                             }
-                    }
-                    else
-                    {
+                    } else {
                         Toast.makeText(this, "Error Message:" + task.exception!!.message.toString(), Toast.LENGTH_SHORT).show()
                     }
                 }

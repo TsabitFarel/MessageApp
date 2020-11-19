@@ -1,15 +1,10 @@
 package id.tsabit.whatsappclone
 
 import android.content.Intent
-import android.icu.text.CaseMap
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -47,56 +42,46 @@ class MainActivity : AppCompatActivity() {
         val viewPager: ViewPager = findViewById(R.id.view_pager)
 
         val ref = FirebaseDatabase.getInstance().reference.child("chats")
-        ref.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
+        ref.addValueEventListener(object : ValueEventListener {
 
+            override fun onDataChange(snapshot: DataSnapshot) {
                 val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
 
                 var countUnreadMessages = 0
 
-                for (dataSnapshot in snapshot.children){
+                for (dataSnapshot in snapshot.children) {
                     val chat = dataSnapshot.getValue(Chat::class.java)
                     if (chat!!.getReceiver().equals(firebaseUser!!.uid) && !chat.isIsSeen()){
                         countUnreadMessages += 1
                     }
                 }
 
-                if (countUnreadMessages == 0)
-                {
+                if (countUnreadMessages == 0) {
                     viewPagerAdapter.addFragment(ChatsFragment(), "Chats")
-                }
-                else
-                {
+                } else {
                     viewPagerAdapter.addFragment(ChatsFragment(), "($countUnreadMessages) Chats")
                 }
-
                 viewPagerAdapter.addFragment(SearchFragment(), "Search")
                 viewPagerAdapter.addFragment(SettingsFragment(), "Settings")
                 viewPager.adapter = viewPagerAdapter
                 tabLayout.setupWithViewPager(viewPager)
             }
-
             override fun onCancelled(error: DatabaseError) {
             }
         })
 
         // Display the Username and Picture
-        refUsers!!.addValueEventListener(object : ValueEventListener{
+        refUsers!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists())
-                {
+                if (snapshot.exists()) {
                     val user: Users? = snapshot.getValue(Users::class.java)
                     user_name.text = user!!.getUsername()
                     Picasso.get().load(user.getProfile()).placeholder(R.drawable.profile).into(profile_image)
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
-
             }
-
         })
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -109,10 +94,8 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        when (item.itemId)
-        {
-            R.id.action_logout ->
-            {
+        when (item.itemId) {
+            R.id.action_logout -> {
                 FirebaseAuth.getInstance().signOut()
                 val intent = Intent(this, WelcomeActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -125,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         return false
     }
 
-    internal class ViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
+    internal class ViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         private val fragments: ArrayList<Fragment>
         private val titles: ArrayList<String>
 
@@ -150,6 +133,5 @@ class MainActivity : AppCompatActivity() {
         override fun getPageTitle(i: Int): CharSequence? {
             return titles[i]
         }
-
     }
 }

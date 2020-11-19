@@ -10,10 +10,9 @@
     tools:context=".WelcomeActivity">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:src="@drawable/ic_welcome" />
-
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_register_welcome"
@@ -34,6 +33,7 @@
         android:layout_height="wrap_content"
         android:text="OR"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/poppinsregular"
         android:textColor="@color/blackDove"
         android:textStyle="bold" />
